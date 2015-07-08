@@ -5,7 +5,6 @@ if [ -z "$FLEXPATH" ]; then
 fi
 
 OPT_DEBUG="-use-network=false \
-    -compiler.debug \
     -library-path+=../lib/blooddy_crypto.swc \
     -define=CONFIG::LOGGING,true \
     -define=CONFIG::FLASH_11_1,true"
