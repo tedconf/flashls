@@ -6,26 +6,12 @@ fi
 
 OPT_DEBUG="-use-network=false \
     -library-path+=../lib/blooddy_crypto.swc \
-    -define=CONFIG::LOGGING,true \
-    -define=CONFIG::FLASH_11_1,true"
+    -define=CONFIG::LOGGING,true"
 
 OPT_RELEASE="-use-network=false \
     -optimize=true \
     -library-path+=../lib/blooddy_crypto.swc \
-    -define=CONFIG::LOGGING,false \
-    -define=CONFIG::FLASH_11_1,true"
-
-OPT_DEBUG_10_1="-use-network=false \
-    -optimize=true \
-    -library-path+=../lib/blooddy_crypto.swc \
-    -define=CONFIG::LOGGING,true \
-    -define=CONFIG::FLASH_11_1,false"
-
-OPT_RELEASE_10_1="-use-network=false \
-    -library-path+=../lib/blooddy_crypto.swc \
-    -optimize=true \
-    -define=CONFIG::LOGGING,false \
-    -define=CONFIG::FLASH_11_1,false"
+    -define=CONFIG::LOGGING,false"
 
 echo "Compiling bin/debug/flashls.swc"
 $FLEXPATH/bin/compc \
@@ -124,6 +110,5 @@ $FLEXPATH/bin/compc -include-sources ../src/org/mangui/osmf \
     $OPT_DEBUG \
     -library-path+=../bin/debug/flashls.swc \
     -library-path+=../lib/osmf \
-    -target-player="11.1" \
-    -debug=false \
+    -target-player="10.1" \
     -external-library-path+=../lib/osmf

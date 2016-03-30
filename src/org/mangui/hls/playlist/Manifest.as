@@ -2,16 +2,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 package org.mangui.hls.playlist {
-    import flash.events.*;
-    import flash.net.*;
+    import flash.events.Event;
+    import flash.events.IOErrorEvent;
+    import flash.events.ProgressEvent;
+    import flash.events.SecurityErrorEvent;
+    import flash.net.URLLoader;
+    import flash.net.URLRequest;
     import flash.utils.ByteArray;
     import flash.utils.Dictionary;
     import flash.utils.getTimer;
+    
+    import org.mangui.hls.HLS;
     import org.mangui.hls.constant.HLSLoaderTypes;
     import org.mangui.hls.constant.HLSTypes;
-    import org.mangui.hls.event.HLSEvent;
     import org.mangui.hls.event.HLSLoadMetrics;
-    import org.mangui.hls.HLS;
     import org.mangui.hls.model.Fragment;
     import org.mangui.hls.model.Level;
     import org.mangui.hls.utils.DateUtil;
@@ -344,6 +348,8 @@ package org.mangui.hls.playlist {
                             }
                         } else if (param.indexOf('AUDIO') > -1) {
                             level.audio_stream_id = (param.split('=')[1] as String).replace(replacedoublequote, "").replace(trimwhitespace, "");
+                        } else if (param.indexOf('CLOSED-CAPTIONS') > -1) {
+                            level.closed_captions = (param.split('=')[1] as String).replace(replacedoublequote, "").replace(trimwhitespace, "");
                         } else if (param.indexOf('NAME') > -1) {
                             level.name = (param.split('=')[1] as String).replace(replacedoublequote, "");
                         }
